@@ -1,17 +1,13 @@
-﻿using System;
+﻿using EGC_Mihalache_3131B;
 
-class Program
+namespace EGC_Mihalache_3131B
 {
-    static void Main(string[] args)
+    internal class Program
     {
-        if (args is null)
+        static void Main()
         {
-            throw new ArgumentNullException(nameof(args));
-        }
-
-        using (SimpleWindow laborator4 = new SimpleWindow())
-        {
-            laborator4.Run(30.0, 0.0);
+            SimpleWindow laborator4 = new SimpleWindow();
+            laborator4.Run(30, 0);
         }
     }
 }

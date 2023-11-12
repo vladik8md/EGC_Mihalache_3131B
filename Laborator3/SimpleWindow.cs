@@ -19,9 +19,9 @@ class SimpleWindow : GameWindow
     // Vector pentru stocarea coordonatelor varfurilor
     private float[] triangleVertices;
 
+    // Check pentru buton apasat, pentru afisare in consola
     private bool keyPressed = false;
 
-    // Constructor
     public SimpleWindow() : base(800, 600)
     {
         KeyDown += Keyboard_KeyDown;
@@ -38,6 +38,7 @@ class SimpleWindow : GameWindow
             else
                 this.WindowState = WindowState.Fullscreen;
 
+        // Schimbare gradient de culoare
         if (e.Key == Key.R)
         {
             ChangeColor(ref redMin, ref redMax);
@@ -55,10 +56,9 @@ class SimpleWindow : GameWindow
         }
     }
 
-    // Funcția ChangeColor modifică valorile variabilelor 'min' și 'max' pentru a schimba culorile într-un interval specific.
+    // Schimbare culori la fiecare apasare pe butoane, folosind o valoare mai mare
     void ChangeColor(ref float min, ref float max)
     {
-        // Schimbăm culorile la fiecare apăsare pe butoane, folosind o valoare mai mare
         min += 0.5f;
         if (min > 1.0f)
         {
@@ -75,7 +75,7 @@ class SimpleWindow : GameWindow
     {
         GL.ClearColor(Color.Gray);
 
-        // Citirea coordonatelor triunghiului din fișier
+        // Citirea coordonatelor triunghiului din fisier
         if (File.Exists("../../triunghi.txt"))
         {
             string[] lines = File.ReadAllLines("../../triunghi.txt");
@@ -92,7 +92,7 @@ class SimpleWindow : GameWindow
         }
         else
         {
-            // Creează și scrie coordonatele implicite ale triunghiului în fișier
+            // Daca nu exista fisierul, se creaza si se umple cu date default
             string[] defaultVertices = { "0.0 -1.0", "1.0 1.0", "-1.0 1.0" };
             File.WriteAllLines("../../triunghi.txt", defaultVertices);
 
@@ -113,12 +113,13 @@ class SimpleWindow : GameWindow
         GL.MatrixMode(MatrixMode.Projection);
         GL.LoadIdentity();
 
-        // Modul în care obiectele sunt proiectate pe ecran
+        // Modul in care obiectele sunt proiectate pe ecran
         GL.Ortho(-1.0, 1.0, -1.0, 1.0, 0.0, 4.0);
     }
 
     protected override void OnMouseMove(MouseMoveEventArgs e)
     {
+        // Afisare pozitie mouse
         Console.WriteLine($"Mouse X: {e.X}, Mouse Y: {e.Y}");
     }
 
@@ -128,37 +129,35 @@ class SimpleWindow : GameWindow
 
         GL.Begin(PrimitiveType.Triangles);
 
-        if (triangleVertices != null && triangleVertices.Length == 6)
+        for (int i = 0; i < 3; i++)
         {
-            for (int i = 0; i < 3; i++)
+            float r = redMin + (i * 0.5f);
+            float g = greenMin + (i * 0.5f);
+            float b = blueMin + (i * 0.5f);
+
+            // Afisare RGB, doar daca este apasata tasta
+            if (keyPressed)
             {
-                float r = redMin + (i * 0.5f);
-                float g = greenMin + (i * 0.5f);
-                float b = blueMin + (i * 0.5f);
-
-                if (keyPressed)
-                {
-                    Console.WriteLine($"Vârf {i + 1}: R = {r}, G = {g}, B = {b}");
-                }
-
-                GL.Color3(r, g, b);
-                GL.Vertex2(triangleVertices[i * 2], triangleVertices[i * 2 + 1]);
+                Console.WriteLine($"Vârf {i + 1}: R = {r}, G = {g}, B = {b}");
             }
+
+            GL.Color3(r, g, b);
+            GL.Vertex2(triangleVertices[i * 2], triangleVertices[i * 2 + 1]);
         }
 
         GL.End();
 
-        GL.Begin(PrimitiveType.Lines);  // Schimbăm tipul de primitiv pentru a desena linii
+        GL.Begin(PrimitiveType.Lines);
 
-        // Desenăm axa X (orizontală)
+        // Axa X
         GL.Color3(Color.Red);
-        GL.Vertex2(-1.0f, 0.0f);  // Punctul de start
-        GL.Vertex2(1.0f, 0.0f);   // Punctul de sfârșit
+        GL.Vertex2(-1.0f, 0.0f);
+        GL.Vertex2(1.0f, 0.0f);
 
-        // Desenăm axa Y (verticală)
+        // Axa Y
         GL.Color3(Color.Green);
-        GL.Vertex2(0.0f, -1.0f);  // Punctul de start
-        GL.Vertex2(0.0f, 1.0f);   // Punctul de sfârșit
+        GL.Vertex2(0.0f, -1.0f);
+        GL.Vertex2(0.0f, 1.0f);
 
         GL.End();
 

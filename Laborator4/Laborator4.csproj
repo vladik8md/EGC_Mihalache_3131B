@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A93591D0-1873-4426-A047-639F8F0A55F7}</ProjectGuid>
+    <ProjectGuid>{2C732C76-E927-4482-AB40-A46EACC878F6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Laborator4</RootNamespace>
     <AssemblyName>Laborator4</AssemblyName>
@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cub.cs" />
+    <Compile Include="Oxyz.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleWindow.cs" />

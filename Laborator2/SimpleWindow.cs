@@ -68,15 +68,15 @@ class SimpleWindow : GameWindow
     {
         base.OnMouseMove(e);
 
-        objectX = (float)e.X / (float)Width * 2.0f - 1.0f;  // Actualizează poziția obiectului pe axa X în funcție de poziția cursorului.
-        objectY = -((float)e.Y / (float)Height * 2.0f - 1.0f);  // Actualizează poziția obiectului pe axa Y în funcție de poziția cursorului.
+        objectX = (float)e.X / (float)Width * 2.0f - 1.0f;  // Actualizare pozitie cursor pe X
+        objectY = -((float)e.Y / (float)Height * 2.0f - 1.0f);  // Actualizare pozitie cursor pe Y
     }
 
     protected override void OnRenderFrame(FrameEventArgs e)
     {
         GL.Clear(ClearBufferMask.ColorBufferBit);
 
-        // Transformare de translație asupra obiectului pentru a-l muta la poziția specificată
+        // Translatie
         GL.MatrixMode(MatrixMode.Modelview);
         GL.LoadIdentity();
         GL.Translate(objectX, objectY, 0.0);
