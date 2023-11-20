@@ -28,6 +28,18 @@ namespace EGC_Mihalache_3131B
             oxyz = new Oxyz();
         }
 
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+
+            GL.Viewport(0, 0, Width, Height);
+
+            projectionMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.PiOver4, Width / (float)Height, 1.0f, 100.0f);
+
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadMatrix(ref projectionMatrix);
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -103,6 +115,10 @@ namespace EGC_Mihalache_3131B
             if (Mouse.GetState().IsButtonDown(MouseButton.Left))
             {
                 objectYPosition -= 0.1f; // Adjust the speed of movement as needed
+            }
+            else if (Mouse.GetState().IsButtonDown(MouseButton.Right))
+            {
+                objectYPosition += 0.1f; // Adjust the speed of movement as needed
             }
 
             // Limitarea de jos
