@@ -62,43 +62,36 @@ namespace EGC_Mihalache_3131B
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadMatrix(ref projectionMatrix);
 
-            // Creare cub
+            // Creare piramida
             float[] vertices = {
-                // Fata - rosu
+                // Baza - rosu
                 -1.0f, -1.0f,  1.0f, 1.0f, 0.0f, 0.0f, // Vertex 1
                  1.0f, -1.0f,  1.0f, 1.0f, 0.0f, 0.0f, // Vertex 2
-                 1.0f,  1.0f,  1.0f, 1.0f, 0.0f, 0.0f, // Vertex 3
-                -1.0f,  1.0f,  1.0f, 1.0f, 0.0f, 0.0f, // Vertex 4
+                 1.0f, -1.0f, -1.0f, 1.0f, 0.0f, 0.0f, // Vertex 3
+                -1.0f, -1.0f, -1.0f, 1.0f, 0.0f, 0.0f, // Vertex 4
 
-                // Spate - verde
-                -1.0f, -1.0f, -1.0f, 0.0f, 1.0f, 0.0f, // Vertex 5
-                 1.0f, -1.0f, -1.0f, 0.0f, 1.0f, 0.0f, // Vertex 6
-                 1.0f,  1.0f, -1.0f, 0.0f, 1.0f, 0.0f, // Vertex 7
-                -1.0f,  1.0f, -1.0f, 0.0f, 1.0f, 0.0f, // Vertex 8
+                // Varful - verde
+                 0.0f,  1.0f,  0.0f, 0.0f, 1.0f, 0.0f, // Vertex 5
 
-                // Top - albastru
-                 1.0f,  1.0f,  1.0f, 0.0f, 0.0f, 1.0f, // Vertex 3
-                -1.0f,  1.0f,  1.0f, 0.0f, 0.0f, 1.0f, // Vertex 4
-                -1.0f,  1.0f, -1.0f, 0.0f, 0.0f, 1.0f, // Vertex 8
-                 1.0f,  1.0f, -1.0f, 0.0f, 0.0f, 1.0f, // Vertex 7
+                // Fata 1 - albastru
+                -1.0f, -1.0f,  1.0f, 0.0f, 0.0f, 1.0f, // Vertex 1
+                 1.0f, -1.0f,  1.0f, 0.0f, 0.0f, 1.0f, // Vertex 2
+                 0.0f,  1.0f,  0.0f, 0.0f, 0.0f, 1.0f, // Vertex 5
 
-                // Jos - galben
-                -1.0f, -1.0f,  1.0f, 1.0f, 1.0f, 0.0f, // Vertex 1
+                // Fata 2 - galben
                  1.0f, -1.0f,  1.0f, 1.0f, 1.0f, 0.0f, // Vertex 2
-                 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 0.0f, // Vertex 6
-                -1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 0.0f, // Vertex 5
+                 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 0.0f, // Vertex 3
+                 0.0f,  1.0f,  0.0f, 1.0f, 1.0f, 0.0f, // Vertex 5
 
-                // Dreapta - bleu
-                 1.0f, -1.0f,  1.0f, 0.0f, 1.0f, 1.0f, // Vertex 2
-                 1.0f, -1.0f, -1.0f, 0.0f, 1.0f, 1.0f, // Vertex 6
-                 1.0f,  1.0f, -1.0f, 0.0f, 1.0f, 1.0f, // Vertex 7
-                 1.0f,  1.0f,  1.0f, 0.0f, 1.0f, 1.0f, // Vertex 3
+                // Fata 3 - rosu
+                 1.0f, -1.0f, -1.0f, 1.0f, 0.0f, 0.0f, // Vertex 3
+                -1.0f, -1.0f, -1.0f, 1.0f, 0.0f, 0.0f, // Vertex 4
+                 0.0f,  1.0f,  0.0f, 1.0f, 0.0f, 0.0f, // Vertex 5
 
-                // Stanga - magenta
-                -1.0f, -1.0f,  1.0f, 1.0f, 0.0f, 1.0f, // Vertex 1
-                -1.0f, -1.0f, -1.0f, 1.0f, 0.0f, 1.0f, // Vertex 5
-                -1.0f,  1.0f, -1.0f, 1.0f, 0.0f, 1.0f, // Vertex 8
-                -1.0f,  1.0f,  1.0f, 1.0f, 0.0f, 1.0f  // Vertex 4
+                // Fata 4 - verde
+                -1.0f, -1.0f, -1.0f, 0.0f, 1.0f, 0.0f, // Vertex 4
+                -1.0f, -1.0f,  1.0f, 0.0f, 1.0f, 0.0f, // Vertex 1
+                 0.0f,  1.0f,  0.0f, 0.0f, 1.0f, 0.0f  // Vertex 5
             };
 
             // Buffer
